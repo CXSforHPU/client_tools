@@ -168,3 +168,16 @@ class chatgml():
 ### get_assitant()
 * 解析返回json中的assitant
 * 发送与解析
+
+***
+# todo list
+## api模块
+- [x] 添加TTS客户端模块
+- [x] 添加chat客户端模块
+- [ ] 提供智能体对话支持模块
+- [ ] 添加获取此时室内温度及湿度客户端模块
+## WebApp文件夹下
+- [ ] 添加web界面应用
+## dirvers文件夹下
+- [ ] 制作音频输入模块
+- [ ] 制作音频输出模块
