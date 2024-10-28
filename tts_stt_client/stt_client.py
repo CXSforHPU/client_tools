@@ -30,6 +30,7 @@ class SpeehToText(object):
         response = requests.post(SpeehToText.url,data=self.data,files={"file":file})
         return response.json().get("data")
 
+
 if __name__ == '__main__':
     api = SpeehToText()
 

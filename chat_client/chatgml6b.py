@@ -39,7 +39,6 @@ class chatgml():
         return ai.get_assitant(response.json())
 
 
-
 if __name__ == '__main__':
     ai = chatgml()
     while 1:

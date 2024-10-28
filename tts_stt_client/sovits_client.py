@@ -1,7 +1,6 @@
 import requests
 import urllib
 import json
-import os
 
 class SovitsClient(object):
     SovitsUrl = 'http://127.0.0.1:5000'
@@ -21,7 +20,7 @@ class SovitsClient(object):
         """
         :param text:    文本（str）
         :param path:    指定文件编写路径
-        :return:        直接播放传入的str文本内容
+        :return:
         """
         url = urllib.parse.quote(text)
 
@@ -34,6 +33,7 @@ class SovitsClient(object):
 
         """
         若需要进行修改音频的采样率与通道数请开启下面代码
+        需要提前配置好 ffmpeg
         """
         # new_path = os.path.join(".","output.wav")
         # os.system(f"ffmpeg -i {path} -y -ar 44100 -ac 2 {new_path}")

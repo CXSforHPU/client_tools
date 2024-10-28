@@ -35,7 +35,6 @@ class LuckyCola_TXHY():
         return LuckyCola_TXHY.get_assitant(response.json())
 
 
-
 if __name__ == '__main__':
     ai = LuckyCola_TXHY()
     while 1:
