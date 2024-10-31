@@ -14,11 +14,19 @@ class SpeehToText(object):
 
     def load_stt_url(self):
 
-        ls = str(client_tools.__file__).split("\\")
-        path = ls[0]
-        for i in ls[1:-1]:
-            path = path + "\\" + i
-        path = path + "\\" + "config.json"
+        if os.name == "posix":
+            ls = str(client_tools.__file__).split("/")
+            path = "/" + ls[1]
+            for i in ls[2:-1]:
+                path = path + "/" + i
+            path = path + "/" + "config.json"
+
+        elif os.name == "nt":
+            ls = str(client_tools.__file__).split("\\")
+            path = ls[0]
+            for i in ls[1:-1]:
+                path = path + "\\" + i
+            path = path + "\\" + "config.json"
 
         with open(path,"r",encoding="utf-8") as f:
             config = json.load(f)
@@ -44,5 +52,5 @@ class SpeehToText(object):
 if __name__ == '__main__':
     api = SpeehToText()
 
-    data = api.post(r"C:\Users\cxs\Desktop\AIGC\server\temp\192.168.83.200\output.wav")
+    data = api.post(r"./test.wav")
     print(data)

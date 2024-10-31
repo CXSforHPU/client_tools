@@ -13,11 +13,19 @@ class SovitsClient(object):
 
     def load_tts_url(self):
 
-        ls = str(client_tools.__file__).split("\\")
-        path = ls[0]
-        for i in ls[1:-1]:
-            path = path + "\\" + i
-        path = path + "\\" + "config.json"
+        if os.name =="posix":
+            ls = str(client_tools.__file__).split("/")
+            path = "/" + ls[1]
+            for i in ls[2:-1]:
+                path = path + "/" + i
+            path = path + "/" + "config.json"
+
+        elif os.name == "nt":
+            ls = str(client_tools.__file__).split("\\")
+            path = ls[0]
+            for i in ls[1:-1]:
+                path = path + "\\" + i
+            path = path + "\\" + "config.json"
 
         with open(path,"r",encoding="utf-8") as f:
             config = json.load(f)
@@ -50,4 +58,5 @@ class SovitsClient(object):
 
 
 if __name__ == '__main__':
-    SovitsClient.text_to_speech(text="你好",path="./test.wav")
+    tts = SovitsClient()
+    tts.text_to_speech(text="窗前明月光",path="./test.wav")
