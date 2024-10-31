@@ -13,7 +13,8 @@ import yaml
 chat请求函数
 """
 def chatbot_reponse(message):
-    ai = chatgml()
+    global ai
+    ai== chatgml()
     ques=message
     user_ed = ai.make_send_json(ques)
     assitant = ai.post(user_ed)
