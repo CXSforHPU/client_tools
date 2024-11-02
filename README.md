@@ -13,11 +13,9 @@
 ***./client_tools/config.json***
 ```json
 {
-  "chat": {
-    "chatgml6b": "http://127.0.0.1:8000",    //访问url地址
-    "luckycola": "https://luckycola.com.cn/hunyuan/txhy",  //访问url地址
-    "luckycola_wxyy": "https://luckycola.com.cn/ai/openwxyy" //访问url地址
-  },
+  "chatgml6b": "http://127.0.0.1:8000",    //访问url地址
+  "luckycola": "https://luckycola.com.cn/hunyuan/txhy",  //访问url地址
+  "luckycola_wxyy": "https://luckycola.com.cn/ai/openwxyy", //访问url地址
   "stt": "http://127.0.0.1:9977/api",//访问url地址
   "tts": "http://127.0.0.1:5000"  //访问url地址
 }
