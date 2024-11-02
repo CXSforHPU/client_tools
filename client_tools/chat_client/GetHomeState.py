@@ -1,31 +1,8 @@
-import client_tools
-import json
-import os
 import requests
+import client_tools
 
-def getConfig():
-
-    if os.name == "posix":
-        ls = str(client_tools.__file__).split("/")
-        path = "/" + ls[1]
-        for i in ls[2:-1]:
-            path = path + "/" + i
-        path = path + "/" + "config.json"
-
-    elif os.name == "nt":
-        ls = str(client_tools.__file__).split("\\")
-        path = ls[0]
-        for i in ls[1:-1]:
-            path = path + "\\" + i
-        path = path + "\\" + "config.json"
-
-    with open(path, 'r', encoding='utf-8') as f:
-        config = json.load(f)
-        url = config["HomeStateData"]
-
-    return url
 def getHomeState(path):
-    url = getConfig()
+    url = client_tools.LoadConfigFile("HomeStateData")
     response = requests.get(url,stream=True)
     if response.status_code == 200:  # 检查响应状态码
         with open(path, 'wb') as f:  # 打开本地文件进行写入操作

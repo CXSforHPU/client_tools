@@ -1,8 +1,7 @@
 import client_tools
-import os
 import requests
 import urllib
-import json
+
 
 class SovitsClient(object):
     SovitsUrl = 'http://127.0.0.1:5000'
@@ -12,24 +11,7 @@ class SovitsClient(object):
         self.load_tts_url()
 
     def load_tts_url(self):
-
-        if os.name =="posix":
-            ls = str(client_tools.__file__).split("/")
-            path = "/" + ls[1]
-            for i in ls[2:-1]:
-                path = path + "/" + i
-            path = path + "/" + "config.json"
-
-        elif os.name == "nt":
-            ls = str(client_tools.__file__).split("\\")
-            path = ls[0]
-            for i in ls[1:-1]:
-                path = path + "\\" + i
-            path = path + "\\" + "config.json"
-
-        with open(path,"r",encoding="utf-8") as f:
-            config = json.load(f)
-            SovitsClient.SovitsUrl = config['tts']
+        SovitsClient.SovitsUrl = client_tools.LoadConfigFile("tts")
 
     @staticmethod
     def text_to_speech(text, path):
@@ -59,4 +41,4 @@ class SovitsClient(object):
 
 if __name__ == '__main__':
     tts = SovitsClient()
-    tts.text_to_speech(text="窗前明月光",path="./test.wav")
+    tts.text_to_speech(text="疑是地上霜",path="./test.wav")

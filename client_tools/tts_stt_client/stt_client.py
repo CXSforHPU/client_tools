@@ -1,7 +1,6 @@
 import requests
-import json
 import client_tools
-import os
+
 
 class SpeehToText(object):
     url = "http://127.0.0.1:9977/api"
@@ -14,23 +13,7 @@ class SpeehToText(object):
 
     def load_stt_url(self):
 
-        if os.name == "posix":
-            ls = str(client_tools.__file__).split("/")
-            path = "/" + ls[1]
-            for i in ls[2:-1]:
-                path = path + "/" + i
-            path = path + "/" + "config.json"
-
-        elif os.name == "nt":
-            ls = str(client_tools.__file__).split("\\")
-            path = ls[0]
-            for i in ls[1:-1]:
-                path = path + "\\" + i
-            path = path + "\\" + "config.json"
-
-        with open(path,"r",encoding="utf-8") as f:
-            config = json.load(f)
-            SpeehToText.url = config["stt"]
+        SpeehToText.url = client_tools.LoadConfigFile("stt")
 
     def make_data(self,model_name= "large-v3",response_format="text"):
 
@@ -51,6 +34,5 @@ class SpeehToText(object):
 
 if __name__ == '__main__':
     api = SpeehToText()
-
     data = api.post(r"./test.wav")
     print(data)

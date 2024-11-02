@@ -6,6 +6,8 @@ demo
 
 """
 import os.path
+
+import client_tools
 from client_tools import *
 import json
 
@@ -21,20 +23,16 @@ class MotivationalCoach(chatgml):
         :param name:指定prompt.json中的智能体名称
 
         """
-        ls = str(client_tools.__file__).split("\\")
-        path = ls[0]
-        for i in ls[1:-1]:
-            path = path + "\\" + i
-        path = os.path.join(path,"chat_client","prompt.json")
-        with open(path,"r",encoding="utf8") as f:
-            data = json.load(f)
-        self._Prompt = data.get(name)
+        self._Prompt = client_tools.GetPromptFile(name)
+
     def make_send_json(self,ques):
         """
         对其进行复写，在prompt中进行格式化字符串传输
         """
         if self._Prompt != "":
             ques = self._Prompt.format(ques)
+        else:
+            assert "为空检查是否存在此角色"
 
         return {"prompt":ques,"history":self.history}
 

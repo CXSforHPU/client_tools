@@ -21,24 +21,7 @@ class chatgml():
 
     def load_chatgml6b_url(self):
 
-        if os.name =="posix":
-            ls = str(client_tools.__file__).split("/")
-            path = "/" + ls[1]
-            for i in ls[2:-1]:
-                path = path + "/" + i
-            path = path + "/" + "config.json"
-
-        elif os.name == "nt":
-            ls = str(client_tools.__file__).split("\\")
-            path = ls[0]
-            for i in ls[1:-1]:
-                path = path + "\\" + i
-            path = path + "\\" + "config.json"
-
-
-        with open(path, 'r', encoding='utf-8') as f:
-            config = json.load(f)
-            chatgml.url = config["chat"]['chatgml6b']
+        chatgml.url = client_tools.LoadConfigFile("chatgml6b")
     def make_send_json(self,ques):
         """
         return : 默认支持长对话
