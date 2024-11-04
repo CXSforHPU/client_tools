@@ -24,29 +24,82 @@
 * 若自己有域名进行更改的话
   * 将自己的域名对其进行替换
 ***
+
 # TTS
 ## 模块位置
-***./client_tools/tts_stt_client/sovits_client***
+***./client_tools/tts_stt_client/sovits_client.py***
+
+  将文本文件转为音频文件，并存储到指定位置。
+```python
+tts = SovitsClient()
+"""
+text_to_speech()
+        """
+        :param text:    文本（str）
+        :param path:    指定文件编写路径
+        :return:
+        """
+"""
+tts.text_to_speech(text="举头望明月，低头思故乡",path="./test.wav")
+```
 
 # STT
 ## 模块位置
-***./client_tools/tts_stt_client/stt_client***
+***./client_tools/tts_stt_client/stt_client.py***
+
+  将音频文件转为文本，并存储到指定位置，还可以输出文本内容。
+
+```python
+
+"""
+post(self,file_path):
+        """
+        :param file_path: 音频文件路径
+        :return : 返回文字转语音的数据
+        """
+"""
+```
 
 # chat模块
 ## 模块位置
-***./client_tools/tts_stt_client/chat_client***
-* ./client_tools/tts_stt_client/chat_client/chatgml6b.py
-  * 此文件提供了chatgml6b的api接口方式
+***./client_tools/chat_client/chatgml6b.py***
 
-## 并且提供三个接口
-### make_send_json()
+    此文件提供了chatgml6b的api接口方式
+  
+    通过调用api接口，可以进行长对话，而且支持通过提示词与智能体对话。
+```python
+  
+make_send_json()
 * 制作要发送的json数据包，返回类型为dict
-### post()
+post()
 * 发送json数据包
 * reture 经过get_assitant解析过的数据
-### get_assitant()
+get_assitant()
 * 解析返回json中的assitant
 * 发送与解析
+```
+# utils 模块
+## 模块位置
+***./client_tools/utils/LoadConfig.py***
+
+    通过获取传感器的信息，将信息存储到文件中，读取文件中时间，温度，湿度的数据并输出。
+```python 
+"""
+getHomeState(path):
+"""
+            获取传感器的信息，打开本地文件进行写入操作，
+            分块读取文件内容，每次读取1KBw。
+            文件类型为 yml 文件
+"""
+LoadHomeState(path,num=10):
+    """
+    :param path: data.yml 文件路径
+    :parm num : 最新的几组数据
+    :return : 返回三组列表,时间，温度，湿度
+    """
+
+```
+
 
 ***
 # todo list
