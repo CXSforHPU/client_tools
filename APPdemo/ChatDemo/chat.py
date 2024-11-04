@@ -4,6 +4,12 @@ demo :
 
 """
 import os
+import sys
+#添加包环境变量
+path = os.path.split(os.path.realpath(__file__))[0]
+path = os.path.join(path,"..","..")
+sys.path.append(path)
+
 from client_tools import *
 
 print(os.name)

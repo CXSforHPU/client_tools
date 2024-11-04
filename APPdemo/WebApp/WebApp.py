@@ -1,11 +1,17 @@
 """
 待完成
 """
+import os
+import sys
+#添加包环境变量
+path = os.path.split(os.path.realpath(__file__))[0]
+path = os.path.join(path,"..","..")
+sys.path.append(path)
 import gradio as gr
 from flask import Flask, render_template, request, redirect
 from flask_sock import Sock
 from client_tools import *
-import os
+
 import yaml
 #todo(sy) 添加web界面应用
 

@@ -6,7 +6,11 @@ demo
 
 """
 import os.path
-
+import sys
+#添加包环境变量
+path = os.path.split(os.path.realpath(__file__))[0]
+path = os.path.join(path,"..","..")
+sys.path.append(path)
 import client_tools
 from client_tools import *
 import json
