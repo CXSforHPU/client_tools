@@ -16,4 +16,11 @@ from client_tools.tts_stt_client.stt_client import SpeehToText
 """
 导入工具类
 """
-from client_tools.utils.LoadConfig import LoadConfigFile,GetPromptFile
+from client_tools.utils.LoadConfig import LoadConfigFile,GetPromptFile,LoadHomeState
+
+"""
+windows 声卡api
+"""
+from client_tools.drivers.win64.audio_input import *
+from client_tools.drivers.win64.audio_output import *
+from client_tools.drivers.win64.tools import init_device
