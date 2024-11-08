@@ -1,7 +1,7 @@
 import client_tools
 import requests
 import urllib
-
+from tqdm import tqdm
 
 class SovitsClient(object):
     SovitsUrl = 'http://127.0.0.1:5000'
@@ -23,11 +23,21 @@ class SovitsClient(object):
         url = urllib.parse.quote(text)
 
         wav = requests.get(
-            f'{SovitsClient.SovitsUrl}?text={url}&text_language=zh')
+            f'{SovitsClient.SovitsUrl}?text={url}&text_language=zh',stream=True)
 
-        wav = wav.content
-        with open(path, 'wb') as fp:
-            fp.write(wav)
+
+        # 获取文件大小（如果服务器提供了这个信息）
+        total_size_in_bytes = int(wav.headers.get('content-length', 0))
+        block_size = 1024  # 每次读取的块大小
+
+        with open(path, 'wb') as f:
+            with tqdm(total=total_size_in_bytes, unit='B', unit_scale=True, desc="下载进度") as pbar:
+                for chunk in wav.iter_content(chunk_size=block_size):
+                    if chunk:
+                        f.write(chunk)
+                        pbar.update(len(chunk))  # 更新进度条
+
+        print('文件下载完成！')
 
         """
         若需要进行修改音频的采样率与通道数请开启下面代码

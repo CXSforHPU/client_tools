@@ -1,5 +1,6 @@
 import os
 import client_tools
+from client_tools.chat_client.GetHomeState import getHomeState
 import json
 import yaml
 
@@ -71,14 +72,15 @@ def LoadHomeState(path,num=10):
         for tim,HumTem in i.items():
             hum,tem = HumTem.split("\t")
             time.append(tim)
-            temperature.append(tem)
-            humidity.append(hum)
+            temperature.append(float(tem))
+            humidity.append(float(hum))
 
     return time,temperature,humidity
 
 
 if __name__ == "__main__":
-    time,tem,hum = LoadHomeState(r"C:\Users\31309\Desktop\xx\project\client_tools\client_tools\chat_client\config.yml")
+    getHomeState("./data.yml")
+    time,tem,hum = LoadHomeState(r"./data.yml")
     print(time)
     print(tem)
     print(hum)

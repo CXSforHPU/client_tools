@@ -1,18 +1,28 @@
 import requests
 import client_tools
+from tqdm import tqdm
 
 def getHomeState(path):
     url = client_tools.LoadConfigFile("HomeStateData")
-    response = requests.get(url,stream=True)
-    if response.status_code == 200:  # 检查响应状态码
-        with open(path, 'wb') as f:  # 打开本地文件进行写入操作
-            for chunk in response.iter_content(chunk_size=1024):  # 分块读取文件内容，每次读取1KB
-                if chunk:  # 检查是否有数据块可读
-                    f.write(chunk)  # 将数据块写入本地文件
-                    f.flush()  # 刷新缓冲区，确保数据写入磁盘
-        print('文件下载完成！')
-    else:
-        print('下载失败，状态码：', response.status_code)
+    try:
+        response = requests.get(url, stream=True)
+        response.raise_for_status()  # 检查响应状态码，如果有错误则抛出HTTPError异常
+    except requests.exceptions.HTTPError as err:
+        print('下载失败，错误：', err)
+        return
+
+    # 获取文件大小（如果服务器提供了这个信息）
+    total_size_in_bytes = int(response.headers.get('content-length', 0))
+    block_size = 1024  # 每次读取的块大小
+
+    with open(path, 'wb') as f:
+        with tqdm(total=total_size_in_bytes, unit='B', unit_scale=True, desc="下载进度") as pbar:
+            for chunk in response.iter_content(chunk_size=block_size):
+                if chunk:
+                    f.write(chunk)
+                    pbar.update(len(chunk))  # 更新进度条
+
+    print('文件下载完成！')
 
 if __name__ == '__main__':
     getHomeState("./config.yml")
