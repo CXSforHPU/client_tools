@@ -84,13 +84,18 @@ get_assitant()
 
     通过获取传感器的信息，将信息存储到文件中，读取文件中时间，温度，湿度的数据并输出。
 ```python 
-"""
-getHomeState(path):
-"""
-            获取传感器的信息，打开本地文件进行写入操作，
-            分块读取文件内容，每次读取1KBw。
-            文件类型为 yml 文件
-"""
+LoadConfigFile(name):
+    """
+    :param name: config file name
+    :return: url
+    """
+
+GetPromptFile(name):
+    """
+    :param name: 获取角色名字
+    :return:    prompt指令
+    """
+
 LoadHomeState(path,num=10):
     """
     :param path: data.yml 文件路径
@@ -99,12 +104,19 @@ LoadHomeState(path,num=10):
     """
 
 ```
-
+***./client_tools/utils/DrawHomeState.py***
+```python
+DrawHomeStateCMD(num=10):
+    """
+    :param num:指定绘制最新的几组数据
+    """
+```
 
 ***
 # todo list
 - [ ] 完善文档内容
 ## api模块
+- [x] 添加下载进度条
 - [x] 添加TTS客户端模块
 - [ ] 添加chat客户端模块
   - [x] 提供chatgml6b模块
@@ -124,10 +136,16 @@ LoadHomeState(path,num=10):
 - [x] 添加获取此时室内温度及湿度客户端模块
 ## dirvers文件夹下
 - [ ] 制作音频输入模块
+  - [x] windows添加录音模块
 - [ ] 制作音频输出模块
+    - [x] windows添加放音模块
 - [ ] 制作中断管理模块
 ## flowsheet文件夹下
 - [x] 添加工作流程图
+## utils文件夹下  
+- [x] 添加指定获取url模块
+- [x] 添加指定获取prompt模块
+- [x] 添加终端家庭状况可视化输出模块
 ***
 # ***欢迎大家设计不同的app来提交pr***
 ## APPDemo文件夹下
