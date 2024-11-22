@@ -1,0 +1,32 @@
+
+.main.svelte-wpkpf6{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#submit_button{
+    height: 60px;
+}
+#label{
+    background-color: #f4f4f5;
+    background-size: cover;
+
+}
+#image_input{
+    height:360px;
+}
+#image_output{
+    height:360px;
+}
+#chatbot{
+    height: 630px;
+}
+#label-button{
+    height: 50px;
+    width: 15%;
+}
