@@ -144,8 +144,12 @@ DrawHomeStateCMD(num=10):
 # ***欢迎大家设计不同的app来提交pr***
 ## APPDemo文件夹下
 - [ ] 添加web界面应用
-  - [ ] 显示chat对话
-  - [ ] 显示室内健康程度监测
+  - [x] gradio
+    - [x] 显示chat对话
+    - [x] 显示室内健康程度监测
+  - [ ] flask
+    - [ ] 显示chat对话
+    - [ ] 显示室内健康程度监测
 - [x] 添加对话app demo
   - [x] 普通对话
   - [x] 智能体对话
