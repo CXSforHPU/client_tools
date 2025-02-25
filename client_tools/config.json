@@ -2,6 +2,7 @@
   "chatgml6b": "http://chatglm6b.f3.ttvt.cc",
   "luckycola": "https://luckycola.com.cn/hunyuan/txhy",
   "luckycola_wxyy": "https://luckycola.com.cn/ai/openwxyy",
+  "siliconflow_deepseek_distill_8b": "https://api.siliconflow.cn/v1/chat/completions",
   "stt": "http://stt.if4.ttyt.cc/api",
   "tts": "http://tts.if4.ttyt.cc",
   "HomeStateData": "http://home.if4.ttyt.cc"
