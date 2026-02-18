@@ -18,7 +18,7 @@
   "luckycola_wxyy": "https://luckycola.com.cn/ai/openwxyy",
   "stt": "http://stt.if4.ttyt.cc/api",
   "tts": "http://tts.if4.ttyt.cc",
-  "HomeStateData": "http://chatglm6b.f3.ttvt.cc/home" //暂时关闭
+  "HomeStateData": "http://home.if4.ttyt.cc"
 }
 ```
 * 此为默认地址
@@ -120,10 +120,12 @@ DrawHomeStateCMD(num=10):
 - [x] 添加下载进度条
 - [x] 添加TTS客户端模块
 - [ ] 添加chat客户端模块
-  - [x] 提供chatgml6b模块
+  - [x] 提供chatgml3-6b模块
+  - [x] deepseek 
   - [x] 提供luckycola 厂商提供api
     - [x] 文心一言
     - [x] 腾讯混元
+    - [x] 众多模型均适用的调用函数文件
 - [x] 添加STT客户端模块
 - [x] 提供智能体对话支持模块
   - [x] 添加更多支持的Prompt在 ./client_tools/chat_client/prompt.json 文件下
@@ -150,9 +152,18 @@ DrawHomeStateCMD(num=10):
   - [ ] flask
     - [ ] 显示chat对话
     - [ ] 显示室内健康程度监测
+  - [x] 显示chat对话
+  - [x] 显示室内健康程度监测
 - [x] 添加对话app demo
   - [x] 普通对话
   - [x] 智能体对话
 - [ ] 说书APP
 - [ ] 打印家庭状况 demo
   - [x] 终端打印 
+- [ ] orangepi适配
+  - [x] 语音对话demo
+  - [x] 家庭状况检测demo 
+***
+部分文档链接
+【腾讯文档】技术文档
+https://docs.qq.com/doc/DWGZuelJrdElCbWFm
