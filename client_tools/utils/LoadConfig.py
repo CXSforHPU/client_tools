@@ -3,7 +3,7 @@ import client_tools
 from client_tools.chat_client.GetHomeState import getHomeState
 import json
 import yaml
-
+import numpy as  np
 def LoadConfigFile(name):
     """
     :param name: config file name
@@ -72,9 +72,14 @@ def LoadHomeState(path,num=10):
         for tim,HumTem in i.items():
             hum,tem = HumTem.split("\t")
             time.append(tim)
-            temperature.append(float(tem))
-            humidity.append(float(hum))
-
+            if float(tem):
+                temperature.append(float(tem))
+            else:
+                temperature.append(np.nan)
+            if float(hum):
+                humidity.append(float(hum))
+            else:
+                humidity.append(np.nan)
     return time,temperature,humidity
 
 
